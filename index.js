@@ -7,7 +7,17 @@ let allPets = techTrackData.map((item) => {
 });
 
 // Show all pets
-console.log("Show all pets:", allPets);
+console.log("Show all favorite pet answers:", allPets);
+
+// Remove witespace from listAnswers
+let removeWhitespacFromList = (list) => {
+  return list.map((item) => {
+    return item.trim();
+  });
+};
+
+let trimmedList = removeWhitespacFromList(allPets);
+console.log("Trim all answers", trimmedList);
 
 // Change all pets with firstletter uppercase
 let upperCaseFirstLetter = allPets.map((item) => {
@@ -18,7 +28,7 @@ let upperCaseFirstLetter = allPets.map((item) => {
 });
 
 // Show all pets with firstletter uppercase
-console.log("Pets with firstletter uppercase:", upperCaseFirstLetter);
+console.log("Pet answers with firstletter uppercase:", upperCaseFirstLetter);
 
 // Get the first word of an answer if it contains a specific word/sign in answer
 let getFirstAnswerBasedOnContentsAnswer = (listAnswers, contents) => {
@@ -32,4 +42,7 @@ let getFirstAnswerBasedOnContentsAnswer = (listAnswers, contents) => {
 };
 
 // Show the first answers only from the list of answers
-console.log(getFirstAnswerBasedOnContentsAnswer(upperCaseFirstLetter, " of"));
+console.log(
+  "Pet answers with only one answer",
+  getFirstAnswerBasedOnContentsAnswer(upperCaseFirstLetter, " of")
+);
