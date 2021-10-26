@@ -19,3 +19,17 @@ let upperCaseFirstLetter = allPets.map((item) => {
 
 // Show all pets with firstletter uppercase
 console.log("Pets with firstletter uppercase:", upperCaseFirstLetter);
+
+// Get the first word of an answer if it contains a specific word/sign in answer
+let getFirstAnswerBasedOnContentsAnswer = (listAnswers, contents) => {
+  return listAnswers.map((item) => {
+    if (item.includes(contents)) {
+      return item.split(" ")[0];
+    } else {
+      return item;
+    }
+  });
+};
+
+// Show the first answers only from the list of answers
+console.log(getFirstAnswerBasedOnContentsAnswer(upperCaseFirstLetter, " of"));
