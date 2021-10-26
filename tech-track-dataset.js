@@ -1,4 +1,4 @@
-const tech_track_data = [
+const techTrackData = [
   {
     "Wat is je favoriete soort huisdier?": "kat",
     "Wat is je oogkleur?": "Bruin",
