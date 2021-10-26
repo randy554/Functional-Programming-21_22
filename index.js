@@ -46,3 +46,21 @@ console.log(
   "Pet answers with only one answer",
   getFirstAnswerBasedOnContentsAnswer(upperCaseFirstLetter, " of")
 );
+
+// Filter on animal value
+let filterOnAnimalValue = (list, animalValue) => {
+  return list.filter((item) => {
+    if (item == animalValue) {
+      return item;
+    }
+  });
+};
+
+// Show list based on value
+console.log(
+  "Show list based on value:",
+  filterOnAnimalValue(
+    getFirstAnswerBasedOnContentsAnswer(upperCaseFirstLetter, " of"),
+    "Hond"
+  )
+);
