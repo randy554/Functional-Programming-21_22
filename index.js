@@ -65,7 +65,15 @@ let getFirstAnswerBasedOnContentsAnswer = (listAnswers, contents) => {
 // Show the first answers only from the list of answers
 console.log(
   "Pet answers with only one answer",
-  getFirstAnswerBasedOnContentsAnswer(upperCaseFirstLetter, " of")
+  getFirstAnswerBasedOnContentsAnswer(
+    uppercaseFirstLetterAnswersFromList(
+      showAllAnswersFromQuestion(
+        techTrackData,
+        "Wat is je favoriete soort huisdier?"
+      )
+    ),
+    " of"
+  )
 );
 
 // Filter on animal value
@@ -81,7 +89,15 @@ let filterOnAnimalValue = (list, animalValue) => {
 console.log(
   "Show list based on value:",
   filterOnAnimalValue(
-    getFirstAnswerBasedOnContentsAnswer(upperCaseFirstLetter, " of"),
+    getFirstAnswerBasedOnContentsAnswer(
+      uppercaseFirstLetterAnswersFromList(
+        showAllAnswersFromQuestion(
+          techTrackData,
+          "Wat is je favoriete soort huisdier?"
+        )
+      ),
+      " of"
+    ),
     "Hond"
   )
 );
