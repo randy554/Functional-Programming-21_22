@@ -33,16 +33,23 @@ let trimmedList = removeWhitespacFromList(
 );
 console.log("Trim all answers", trimmedList);
 
-// Change all pets with firstletter uppercase
-let upperCaseFirstLetter = allPets.map((item) => {
-  // console.log("Caps pet:", item.toUpperCase());
-  // console.log("Caps pet:", item.charAt(0).toUpperCase() + item.slice(1));
-  // console.log("Caps pet:", item.slice(1));
-  return item.charAt(0).toUpperCase() + item.slice(1);
-});
+// Change all answers from list to firstletter uppercase
+let uppercaseFirstLetterAnswersFromList = (list) => {
+  return list.map((item) => {
+    return item.charAt(0).toUpperCase() + item.slice(1);
+  });
+};
 
 // Show all pets with firstletter uppercase
-console.log("Pet answers with firstletter uppercase:", upperCaseFirstLetter);
+console.log(
+  "Pet answers with firstletter uppercase:",
+  uppercaseFirstLetterAnswersFromList(
+    showAllAnswersFromQuestion(
+      techTrackData,
+      "Wat is je favoriete soort huisdier?"
+    )
+  )
+);
 
 // Get the first word of an answer if it contains a specific word/sign in answer
 let getFirstAnswerBasedOnContentsAnswer = (listAnswers, contents) => {
