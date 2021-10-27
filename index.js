@@ -1,13 +1,22 @@
 // Log data
 console.log("Tech track data:", techTrackData);
 
-// Get all pets
-let allPets = techTrackData.map((item) => {
-  return item["Wat is je favoriete soort huisdier?"];
-});
+// Get all answers from list
+let showAllAnswersFromQuestion = (list, question) => {
+  // Return list with answers from question
+  return list.map((item) => {
+    return item[question];
+  });
+};
 
-// Show all pets
-console.log("Show all favorite pet answers:", allPets);
+// Show all favorite pet answers
+console.log(
+  "Show all favorite pet answers:",
+  showAllAnswersFromQuestion(
+    techTrackData,
+    "Wat is je favoriete soort huisdier?"
+  )
+);
 
 // Remove witespace from listAnswers
 let removeWhitespacFromList = (list) => {
@@ -16,7 +25,12 @@ let removeWhitespacFromList = (list) => {
   });
 };
 
-let trimmedList = removeWhitespacFromList(allPets);
+let trimmedList = removeWhitespacFromList(
+  showAllAnswersFromQuestion(
+    techTrackData,
+    "Wat is je favoriete soort huisdier?"
+  )
+);
 console.log("Trim all answers", trimmedList);
 
 // Change all pets with firstletter uppercase
