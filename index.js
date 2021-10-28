@@ -101,3 +101,34 @@ console.log(
     "Hond"
   )
 );
+
+// Replace a value from the list
+let replaceValueFromList = (list, replace, replaceWith) => {
+  return list.map((item) => {
+    // If replace value is found in the list, replace it with new value
+    if (item == replace) {
+      return item.replaceAll(replace, replaceWith);
+    } else {
+      // Else just return regular value
+      return item;
+    }
+  });
+};
+
+// Show list with a replaced value
+console.log(
+  "A list with a replaced value:",
+  replaceValueFromList(
+    getFirstAnswerBasedOnContentsAnswer(
+      uppercaseFirstLetterAnswersFromList(
+        showAllAnswersFromQuestion(
+          techTrackData,
+          "Wat is je favoriete soort huisdier?"
+        )
+      ),
+      " of"
+    ),
+    "Dachshund",
+    "Hond"
+  )
+);
