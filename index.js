@@ -1,3 +1,13 @@
+// fetch dataset from url
+
+// Get dataset from URL
+fetch(
+  "https://raw.githubusercontent.com/cmda-tt/course-21-22/main/tech-track-dataset.json"
+)
+  .then((result) => result.json())
+  .then((techTrackData) => console.log("Dataset from url:", techTrackData))
+  .catch((err) => console.log("Fetch failed!:", err));
+
 // Log data
 console.log("Tech track data:", techTrackData);
 
