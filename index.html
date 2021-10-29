@@ -11,12 +11,21 @@
       * {
         color: #d8d4cf;
       }
+
+      li {
+        list-style-type: decimal-leading-zero;
+      }
+
+      li::marker {
+        color: red;
+      }
     </style>
     <title>Functional Programming</title>
   </head>
   <body>
     <h1>Tech Track Data</h1>
 
+    <h2 id="datasetListTitle"></h2>
     <ul id="datasetList"></ul>
 
     <script src="index.js"></script>

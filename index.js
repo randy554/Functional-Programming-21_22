@@ -1,5 +1,3 @@
-// fetch dataset from url
-
 // Get dataset from URL
 fetch(
   "https://raw.githubusercontent.com/cmda-tt/course-21-22/main/tech-track-dataset.json"
@@ -42,6 +40,17 @@ fetch(
         )
       )
     );
+
+    // // Show list on page
+    // displayList(
+    //   uppercaseFirstLetterAnswersFromList(
+    //     showAllAnswersFromQuestion(
+    //       techTrackData,
+    //       "Wat is je favoriete soort huisdier?"
+    //     )
+    //   ),
+    //   "Show list by first letter uppercase"
+    // );
     return techTrackData;
   })
   .then((techTrackData) => {
@@ -77,6 +86,23 @@ fetch(
         "Hond"
       )
     );
+
+    // // Show list on page:
+    // displayList(
+    //   filterOnAnimalValue(
+    //     getFirstAnswerBasedOnContentsAnswer(
+    //       uppercaseFirstLetterAnswersFromList(
+    //         showAllAnswersFromQuestion(
+    //           techTrackData,
+    //           "Wat is je favoriete soort huisdier?"
+    //         )
+    //       ),
+    //       " of"
+    //     ),
+    //     "Hond"
+    //   ),
+    //   "Show list by animal"
+    // );
     return techTrackData;
   })
   .then((techTrackData) => {
@@ -97,6 +123,37 @@ fetch(
         "Hond"
       )
     );
+
+    // // Show list on page:
+    // displayList(
+    //   replaceValueFromList(
+    //     getFirstAnswerBasedOnContentsAnswer(
+    //       uppercaseFirstLetterAnswersFromList(
+    //         showAllAnswersFromQuestion(
+    //           techTrackData,
+    //           "Wat is je favoriete soort huisdier?"
+    //         )
+    //       ),
+    //       " of"
+    //     ),
+    //     "Dachshund",
+    //     "Hond"
+    //   ),
+    //   "Show a list with a replaced value"
+    // );
+
+    return techTrackData;
+  })
+  .then((techTrackData) => {
+    // Show list on page:
+    displayList(
+      showAllAnswersFromQuestion(
+        techTrackData,
+        "Wat is je favoriete soort huisdier?"
+      ),
+      "All favorite pet answers"
+    );
+
     return techTrackData;
   })
   .catch((err) => console.log("Fetch failed!:", err));
@@ -153,5 +210,18 @@ let replaceValueFromList = (list, replace, replaceWith) => {
       // Else just return regular value
       return item;
     }
+  });
+};
+// Show dataset as list on the table
+let displayList = (datasetList, title) => {
+  let elementListTitle = document.getElementById("datasetListTitle");
+  elementListTitle.innerHTML = title + ":";
+  let elementList = document.getElementById("datasetList");
+  let listItem;
+
+  datasetList.forEach((item) => {
+    listItem = document.createElement("LI");
+    listItem.innerHTML = item;
+    elementList.appendChild(listItem);
   });
 };
