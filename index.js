@@ -10,9 +10,9 @@ fetch(
     return techTrackData;
   })
   .then((techTrackData) => {
+    console.log("Show all favorite pet answers:");
     // Show all favorite pet answers
-    console.log(
-      "Show all favorite pet answers:",
+    console.table(
       showAllAnswersFromQuestion(
         techTrackData,
         "Wat is je favoriete soort huisdier?"
@@ -27,13 +27,14 @@ fetch(
         "Wat is je favoriete soort huisdier?"
       )
     );
-    console.log("Trim all answers", trimmedList);
+    console.log("Trim all answers:");
+    console.table(trimmedList);
     return techTrackData;
   })
   .then((techTrackData) => {
     // Show all pets with firstletter uppercase
-    console.log(
-      "Pet answers with firstletter uppercase:",
+    console.log("Pet answers with firstletter uppercase:");
+    console.table(
       uppercaseFirstLetterAnswersFromList(
         showAllAnswersFromQuestion(
           techTrackData,
@@ -45,8 +46,8 @@ fetch(
   })
   .then((techTrackData) => {
     // Show the first answers only from the list of answers
-    console.log(
-      "Pet answers with only one answer",
+    console.log("Pet answers with only one answer");
+    console.table(
       getFirstAnswerBasedOnContentsAnswer(
         uppercaseFirstLetterAnswersFromList(
           showAllAnswersFromQuestion(
@@ -61,8 +62,8 @@ fetch(
   })
   .then((techTrackData) => {
     // Show list based on value
-    console.log(
-      "Show list based on value:",
+    console.log("Show list based on value:");
+    console.table(
       filterOnAnimalValue(
         getFirstAnswerBasedOnContentsAnswer(
           uppercaseFirstLetterAnswersFromList(
@@ -80,8 +81,8 @@ fetch(
   })
   .then((techTrackData) => {
     // Show list with a replaced value
-    console.log(
-      "A list with a replaced value:",
+    console.log("A list with a replaced value:");
+    console.table(
       replaceValueFromList(
         getFirstAnswerBasedOnContentsAnswer(
           uppercaseFirstLetterAnswersFromList(
