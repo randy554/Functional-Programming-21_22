@@ -3,7 +3,7 @@ let apiKey = "d08928de0d5d4809aef8375899851622";
 let phrases = "corona";
 let language = "nl";
 let sortBy = "relevancy";
-let pageSize = 30;
+let pageSize = 20;
 let page = 1;
 let totalNumberPages;
 let fullDataset = [];
@@ -18,7 +18,7 @@ let getData = (endpoint) => {
       console.log("DB:", fullDataset);
       if (page <= totalPages(data.totalResults, pageSize)) {
         ++page;
-        fullDataset.push(data.articles);
+        fullDataset = [...fullDataset, ...data.articles];
         getData(
           `https://newsapi.org/v2/everything?qInTitle=${phrases}&language=${language}&page=${page}&pageSize=${pageSize}&apiKey=${apiKey}`
         );
