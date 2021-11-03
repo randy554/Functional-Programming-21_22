@@ -1,6 +1,7 @@
+import API_KEY from "./apiKey.js";
+
 // Set API endpoint parameters
-let apiKey = "d08928de0d5d4809aef8375899851622";
-let phrases = "corona";
+let phrases = "Ronaldo";
 let language = "nl";
 let sortBy = "relevancy";
 let pageSize = 20;
@@ -8,19 +9,18 @@ let page = 1;
 let totalNumberPages;
 let fullDataset = [];
 
-let endPoint = `https://newsapi.org/v2/everything?qInTitle=${phrases}&language=${language}&page=${page}&pageSize=${pageSize}&apiKey=${apiKey}`;
+let endPoint = `https://newsapi.org/v2/everything?qInTitle=${phrases}&language=${language}&page=${page}&pageSize=${pageSize}&apiKey=${API_KEY}`;
 
 let getData = (endpoint) => {
   fetch(endpoint)
     .then((result) => result.json())
     .then((data) => {
-      console.log("Wat is die data hier:", data);
       console.log("DB:", fullDataset);
       if (page <= totalPages(data.totalResults, pageSize)) {
         ++page;
         fullDataset = [...fullDataset, ...data.articles];
         getData(
-          `https://newsapi.org/v2/everything?qInTitle=${phrases}&language=${language}&page=${page}&pageSize=${pageSize}&apiKey=${apiKey}`
+          `https://newsapi.org/v2/everything?qInTitle=${phrases}&language=${language}&page=${page}&pageSize=${pageSize}&apiKey=${API_KEY}`
         );
         return data;
       } else {
