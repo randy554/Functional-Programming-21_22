@@ -11,18 +11,21 @@ let fullDataset = [];
 let endPoint = `https://newsapi.org/v2/everything?qInTitle=${phrases}&language=${language}&page=${page}&pageSize=${pageSize}&apiKey=${apiKey}`;
 
 let getData = (endpoint) => {
-  fetch(endpoint)
-    .then((result) => result.json())
+  fetch(endpoint) // get data from API
+    .then((result) => result.json()) // Turn result into JSON data
     .then((data) => {
       console.log("DB:", fullDataset);
+
       if (page <= totalPages(data.totalResults, pageSize)) {
-        ++page;
-        fullDataset = [...fullDataset, ...data.articles];
+        // Is there more data to get from API, get the data
+        ++page; // update 'page' parameter for next call
+        fullDataset = [...fullDataset, ...data.articles]; // Add the new articles data from fetch to previous articles array
         getData(
           `https://newsapi.org/v2/everything?qInTitle=${phrases}&language=${language}&page=${page}&pageSize=${pageSize}&apiKey=${apiKey}`
         );
         return data;
       } else {
+        // If there is no data left to fetch, return last data
         console.log("Niets meer");
         return data;
       }
