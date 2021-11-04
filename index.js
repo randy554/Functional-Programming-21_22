@@ -1,6 +1,6 @@
 // Set API endpoint parameters
 let apiKey = "d08928de0d5d4809aef8375899851622";
-let phrases = "corona";
+let phrases = "ronaldo";
 let language = "nl";
 let sortBy = "relevancy";
 let pageSize = 20;
@@ -25,13 +25,9 @@ let getData = (endpoint) => {
         );
         return data;
       } else {
-        // If there is no data left to fetch, return last data
-        console.log("Niets meer");
-        return data;
+        // If there is no data left to fetch, log message
+        console.log("Nothing left!");
       }
-    })
-    .then((someting) => {
-      console.log("We got something:", someting);
     })
     .catch((err) => console.log(err));
 };
@@ -39,9 +35,9 @@ let getData = (endpoint) => {
 getData(endPoint);
 
 // // Get data from News API
-// getData(endPoint)
-//   // fetch(endPoint)
-//   // .then((result) => result.json())
+// getData(endPoint);
+// fetch(endPoint)
+//   .then((result) => result.json())
 //   .then((data) => {
 //     console.log("Totaal aantal artikelen:", data.totalResults);
 //     console.log("Artikelen per pagina:", pageSize);
