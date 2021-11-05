@@ -212,6 +212,7 @@ let replaceValueFromList = (list, replace, replaceWith) => {
     }
   });
 };
+
 // Show dataset as list on the table
 let displayList = (datasetList, title) => {
   let elementListTitle = document.getElementById("datasetListTitle");
