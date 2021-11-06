@@ -15,4 +15,15 @@ fetch(endPoint)
     console.log("News articles:", data);
     return data;
   })
+  .then((data) => {
+    getSourceFrmList(data.articles);
+  })
   .catch((err) => console.log(err));
+
+// Get source name from list
+let getSourceFrmList = (data) => {
+  data.map((article) => {
+    console.log("Source:", article.source.name);
+    return article.source.name;
+  });
+};
