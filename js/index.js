@@ -16,14 +16,32 @@ fetch(endPoint)
     return data;
   })
   .then((data) => {
-    getSourceFrmList(data.articles);
+    let sourceL = getSourceFrmList(data.articles);
+    console.log("List with sources:", sourceL);
+    let newList = listBySourceName(sourceL);
+    console.table("List by source:", newList);
   })
   .catch((err) => console.log(err));
 
 // Get source name from list
 let getSourceFrmList = (data) => {
-  data.map((article) => {
+  return data.map((article) => {
     console.log("Source:", article.source.name);
     return article.source.name;
   });
+};
+
+// Make lists by source name
+let listBySourceName = (list) => {
+  return list.reduce((sourceList, sourceName) => {
+    // If sourceName doesn't exist as an object property, then create new object property with a new array vallue & push sourceName into it as it's value
+    if (!sourceList.hasOwnProperty(sourceName)) {
+      sourceList[sourceName] = [sourceName];
+    } else {
+      // If it exist push another sourceName on to the array list
+      sourceList[sourceName].push(sourceName);
+    }
+
+    return sourceList;
+  }, {});
 };
