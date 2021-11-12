@@ -1,6 +1,6 @@
 import {
   getSourceFrmList,
-  listBySourceName,
+  listByOccurrenceCount,
   removeWordFromValue,
   uppercaseFirstLetterValueFromList,
 } from "./modules/dataCleaning.js";
@@ -32,7 +32,8 @@ fetch(allNewsEndPoint)
     console.log("List with wwww:", withoutW);
     let capFirstL = uppercaseFirstLetterValueFromList(withoutW);
     console.log("List with first letter cap:", capFirstL);
-    let newList = listBySourceName(capFirstL);
-    console.table("List by source:", newList);
+    let newList = listByOccurrenceCount(capFirstL);
+    console.log("List by source:", newList);
+    return newList;
   })
   .catch((err) => console.log(err));

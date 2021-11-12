@@ -6,19 +6,25 @@ let getSourceFrmList = (data) => {
   });
 };
 
-// Make lists by source name
-let listBySourceName = (list) => {
+// Count item occurences in list
+let listByOccurrenceCount = (list) => {
   return list.reduce((sourceList, sourceName) => {
-    // If sourceName doesn't exist as an object property, then create new object property with a new array vallue & push sourceName into it as it's value
-    if (!sourceList.hasOwnProperty(sourceName)) {
-      sourceList[sourceName] = [sourceName];
+    // If the sourceName matches a sourceName value in the sourceList,
+    if (sourceList.find((item) => item.sourceName === sourceName)) {
+      // then store the object
+      let objectGevonden = sourceList.find(
+        (item) => item.sourceName === sourceName
+      );
+      // and use the stored object to increment the article count.
+      objectGevonden.articleCount++;
     } else {
-      // If it exist push another sourceName on to the array list
-      sourceList[sourceName].push(sourceName);
+      // If the sourceName does not exist in the sourceList,
+      // then push an new object to the list
+      sourceList.push({ sourceName: sourceName, articleCount: 1 });
     }
-
+    // return the list
     return sourceList;
-  }, {});
+  }, []);
 };
 
 // Replace value(s) from the list
@@ -43,7 +49,7 @@ let uppercaseFirstLetterValueFromList = (list) => {
 
 export {
   getSourceFrmList,
-  listBySourceName,
+  listByOccurrenceCount,
   removeWordFromValue,
   uppercaseFirstLetterValueFromList,
 };
